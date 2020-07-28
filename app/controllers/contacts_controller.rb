@@ -4,8 +4,15 @@ class ContactsController < ApplicationController
     end
 
     def create
+        
         @contact = Contact.new(contact_params)
-        @contact.save
+        
+        if  @contact.valid?                         # Если форма валидна, сохраняем в БД
+            @contact.save
+        else
+            render action: 'new'                    # Если не в условии возвращаем страницу new
+        end
+    
     end
 
     private

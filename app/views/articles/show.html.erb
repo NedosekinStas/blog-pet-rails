@@ -1,5 +1,31 @@
-<h1><%= @article.title  %></h1>
-
+<h1>Статья</h1>
+<p><%= @article.title  %></p>
 <p><%= @article.text  %></p>
+<hr />
+
+<h3>Комментарий</h3>
+<div>
+    <% @article.comments.each do |comment| %>
+      <i><%= comment.author %></i>
+      <p><%= comment.body %></p>
+    <% end %>
+</div>
+<hr />
+<div>
+    <%= form_for([@article, @article.comments.build]) do |f| %>
+        <label>Оставить комментарий</label>
+    <p>
+        <%= f.label :author %><br />
+        <%= f.text_field :author %>
+    </p>
+    <p>
+        <%= f.label :body %><br />
+        <%= f.text_area :body %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+    <% end %>
+</div>
 
 <%= link_to 'Все статьи', articles_path %>

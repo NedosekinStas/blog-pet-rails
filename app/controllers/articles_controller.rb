@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-    before_action :authenticate_user!
+    before_action :authenticate_user!             # Input method from gem devise  
 
     def new
     end

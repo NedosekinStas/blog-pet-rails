@@ -38,19 +38,24 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-  gem 'chromedriver-helper'
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
-end
-
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  # gem 'chromedriver-helper'
+end
+
+group :test, :development do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
+end
